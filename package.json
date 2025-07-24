@@ -10,8 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "prettier": "prettier --write **/*.{ts,tsx,css,astro,json} --ignore-path .gitignore",
-    "postinstall": "patch-package",
-    "push": "astro build && git add . && git commit -m \"update\" && git push --force https://frostfoe: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@github.com/FrostFoe/maybe_portfolio.git main:main"
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
