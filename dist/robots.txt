@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://enscribe.dev/sitemap-index.xml
+Sitemap: https://frostfoe.dev/sitemap-index.xml
