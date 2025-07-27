@@ -1,4 +1,6 @@
 ---
+import AnimateOnScroll from '@/components/AnimateOnScroll.tsx';
+import MotionDiv from '@/components/MotionDiv.astro';
 import DiscordPresence from '@/components/bento/DiscordPresence.tsx'
 import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
 import SpotifyPresence from '@/components/bento/SpotifyPresence.tsx'
@@ -16,17 +18,35 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
 
 <Layout class="px-2">
   <PageHead slot="head" title="Home" />
-  <section
-    class={cn(
-      'mx-auto grid min-w-xs sm:has-[[data-trigger]:hover]:*:first:[&_[data-overlay]]:opacity-0',
-      'max-w-sm grid-cols-1 [grid-template-areas:"a""b""e""h""i""c""k""d""g""f""j"]',
-      'sm:max-w-2xl sm:grid-cols-2 sm:[grid-template-areas:"a_a""b_d""e_e""j_g""h_i""h_c""k_c""f_f"]',
-      'lg:max-w-5xl lg:grid-cols-3 lg:[grid-template-areas:"a_a_b""d_e_e""h_f_f""h_i_g""k_c_j"]',
-      'xl:max-w-7xl xl:grid-cols-4 xl:[grid-template-areas:"a_a_b_c""d_e_e_c""h_f_f_g""h_i_j_k"]',
-    )}
+  <AnimateOnScroll client:load
+    variants={{
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0 },
+    }}
+    transition={{ duration: 0.5 }}
   >
-    <div class="aspect-[3/4] p-2 [grid-area:a] sm:aspect-[2/1] xl:aspect-[2/1]">
-      <div class="bg-muted size-full border">
+    <section
+      class={cn(
+        'mx-auto grid min-w-xs sm:has-[[data-trigger]:hover]:*:first:[&_[data-overlay]]:opacity-0',
+        'max-w-sm grid-cols-1 [grid-template-areas:"a""b""e""h""i""c""k""d""g""f""j"]',
+        'sm:max-w-2xl sm:grid-cols-2 sm:[grid-template-areas:"a_a""b_d""e_e""j_g""h_i""h_c""k_c""f_f"]',
+        'lg:max-w-5xl lg:grid-cols-3 lg:[grid-template-areas:"a_a_b""d_e_e""h_f_f""h_i_g""k_c_j"]',
+        'xl:max-w-7xl xl:grid-cols-4 xl:[grid-template-areas:"a_a_b_c""d_e_e_c""h_f_f_g""h_i_j_k"]',
+      )}
+    >
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className="aspect-[3/4] p-2 [grid-area:a] sm:aspect-[2/1] xl:aspect-[2/1]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <div
           class="size-full bg-[url('/static/bento/about-background-square.png')] bg-cover bg-center bg-no-repeat sm:bg-[url('/static/bento/about-background.png')]"
         >
@@ -68,10 +88,21 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:b]">
-      <div data-trigger class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="aspect-square p-2 [grid-area:b]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        data-trigger class="bg-muted size-full border"
+      >
         <div
           class="size-full bg-[url('/static/bento/details-background.png')] bg-cover bg-center bg-no-repeat"
         >
@@ -86,25 +117,56 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             </p>
           </div>
         </div>
-      </div>
-    </div>
-    <div
-      class="aspect-square p-2 [grid-area:c] sm:aspect-[1/2] lg:aspect-square xl:aspect-[1/2]"
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="aspect-square p-2 [grid-area:c] sm:aspect-[1/2] lg:aspect-square xl:aspect-[1/2]"
     >
-      <div class="bg-muted size-full border">
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <div
           class="size-full bg-[url('/static/bento/image-1.png')] bg-cover bg-center bg-no-repeat"
         >
         </div>
-      </div>
-    </div>
-    <div class="aspect-auto p-2 [grid-area:d] sm:aspect-square">
-      <div class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="aspect-auto p-2 [grid-area:d] sm:aspect-square"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <DiscordPresence client:load />
-      </div>
-    </div>
-    <div class="aspect-[6/5] p-2 [grid-area:e] sm:aspect-[2/1]">
-      <div data-trigger class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+      className="aspect-[6/5] p-2 [grid-area:e] sm:aspect-[2/1]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        data-trigger class="bg-muted size-full border"
+      >
         <div
           class="group/blog relative size-full bg-[url('/static/bento/blog-background-square.png')] bg-cover bg-center bg-no-repeat sm:bg-[url('/static/bento/blog-background.png')]"
         >
@@ -147,10 +209,21 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             )
           }
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:f] sm:aspect-[2/1]">
-      <div data-trigger class="bg-muted relative size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.6 }}
+      className="aspect-square p-2 [grid-area:f] sm:aspect-[2/1]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        data-trigger class="bg-muted relative size-full border"
+      >
         <div
           class="absolute size-full bg-[url('/static/bento/calendar-background.png')] bg-cover bg-left bg-no-repeat"
         >
@@ -167,10 +240,21 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
         <div class="flex size-full items-center justify-center p-8">
           <GithubCalendar username="jktrn" client:load />
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:g]">
-      <div data-trigger class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.7 }}
+      className="aspect-square p-2 [grid-area:g]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        data-trigger class="bg-muted size-full border"
+      >
         <div
           class="group/spotify relative size-full bg-[url('/static/bento/spotify-background.png')] bg-cover bg-center bg-no-repeat"
         >
@@ -182,18 +266,40 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             <SpotifyPresence client:load />
           </div>
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:h] sm:aspect-[1/2]">
-      <div class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.8 }}
+      className="aspect-square p-2 [grid-area:h] sm:aspect-[1/2]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <div
           class="size-full bg-[url('/static/bento/image-2.png')] bg-cover bg-center bg-no-repeat"
         >
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:i]">
-      <div class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 0.9 }}
+      className="aspect-square p-2 [grid-area:i]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <div
           class="group/github relative flex size-full items-center justify-center bg-[url('/static/bento/github-background.png')] bg-cover bg-center bg-no-repeat"
         >
@@ -222,15 +328,37 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             />
           </Link>
         </div>
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:j]">
-      <div class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 1.0 }}
+      className="aspect-square p-2 [grid-area:j]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        class="bg-muted size-full border"
+      >
         <WakatimeGraph omitLanguages={['Markdown', 'JSON']} client:load />
-      </div>
-    </div>
-    <div class="aspect-square p-2 [grid-area:k]">
-      <div data-trigger class="bg-muted size-full border">
+      </MotionDiv>
+    </AnimateOnScroll>
+    <AnimateOnScroll client:load
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.6, delay: 1.1 }}
+      className="aspect-square p-2 [grid-area:k]"
+    >
+      <MotionDiv
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        data-trigger class="bg-muted size-full border"
+      >
         <div
           class="group/twitter relative flex size-full items-center justify-center bg-[url('/static/bento/twitter-background.png')] bg-cover bg-center bg-no-repeat"
         >
@@ -264,7 +392,7 @@ const latestPost = await getAllPosts().then((posts) => posts.at(0))
             />
           </Link>
         </div>
-      </div>
-    </div>
-  </section>
+      </MotionDiv>
+    </AnimateOnScroll>
+  </AnimateOnScroll>
 </Layout>

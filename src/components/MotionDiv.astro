@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { motion } from 'framer-motion';
+
+interface Props extends HTMLAttributes<'div'> {
+  initial?: object;
+  animate?: object;
+  exit?: object;
+  transition?: object;
+  whileHover?: object;
+  whileTap?: object;
+  variants?: object;
+}
+
+const { initial, animate, exit, transition, whileHover, whileTap, variants, ...rest } = Astro.props;
+---
+
+<motion.div
+  initial={initial}
+  animate={animate}
+  exit={exit}
+  transition={transition}
+  whileHover={whileHover}
+  whileTap={whileTap}
+  variants={variants}
+  {...rest}
+>
+  <slot />
+</motion.div>

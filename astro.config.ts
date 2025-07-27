@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import icon from 'astro-icon'
-
+import partytown from '@astrojs/partytown'
 import expressiveCode from 'astro-expressive-code'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -18,7 +18,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   site: 'https://frostfoe.dev',
-  integrations: [expressiveCode(), mdx(), react(), sitemap(), icon()],
+  integrations: [expressiveCode(), mdx(), react(), sitemap(), icon(), partytown()],
   vite: {
     plugins: [tailwindcss()],
   },
